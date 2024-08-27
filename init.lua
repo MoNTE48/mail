@@ -36,9 +36,9 @@ mail = {
 	message_drafts = {}
 }
 
-if minetest.get_modpath("default") then
-	mail.theme = default.gui_bg .. default.gui_bg_img
-end
+--if minetest.get_modpath("default") then
+--	mail.theme = default.gui_bg .. default.gui_bg_img
+--end
 
 -- sub files
 local MP = minetest.get_modpath(minetest.get_current_modname())

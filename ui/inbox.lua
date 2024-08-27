@@ -37,6 +37,9 @@ function mail.show_inbox(name, sortfieldindex, sortdirection, filter)
         tabheader[0.3,1;boxtab;]] ..
         S("Inbox") .. "," .. S("Outbox").. "," .. S("Drafts") .. trash_tab .. [[;1;false;false]
 
+        image_button_exit[7.8,-0.1;0.75,0.75;close.png;quit;;true;false;close_pressed.png]
+
+        container[0,0.75]
         button[6,0.10;2.5,0.5;new;]] .. S("New") .. [[]
         button[6,0.95;2.5,0.5;read;]] .. S("Read") .. [[]
         button[6,1.70;2.5,0.5;reply;]] .. S("Reply") .. [[]
@@ -50,7 +53,7 @@ function mail.show_inbox(name, sortfieldindex, sortdirection, filter)
         button[6,8.0;2.5,0.5;contacts;]] .. S("Contacts") .. [[]
         button[6,8.8;2.5,0.5;maillists;]] .. S("Mail lists") .. [[]
         button[6,9.7;2.5,0.5;options;]] .. S("Options") .. [[]
-        button_exit[6,10.5;2.5,0.5;quit;]] .. S("Close") .. [[]
+        container_end[]
 
         tooltip[reply;]] .. S("Reply only to the sender") .. [[]
         tooltip[replyall;]] .. S("Reply to all involved people") .. [[]

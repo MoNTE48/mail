@@ -43,7 +43,7 @@ function mail.show_settings(name)
 	local formspec = [[
 			size[10,6;]
 			tabheader[0,0;optionstab;]] .. S("Settings") .. "," .. S("About") .. [[;1;false;false]
-			button[9.35,0;0.75,0.5;back;X]
+            image_button[9.35,-0.1;0.75,0.75;close.png;back;;true;false;close_pressed.png]
 
 			tablecolumns[tree;text]
             table[0,0.775;3,4.5;groups;]] .. groups_str .. [[;]] .. group_index .. [[]

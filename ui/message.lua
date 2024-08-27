@@ -22,7 +22,7 @@ function mail.show_message(name, id)
 
 			box[0,0;7,1.9;]] .. mail.get_color("highlighted") .. [[]
 
-			button[9.25,0.15;0.75,0.5;back;X]
+			image_button[9.25,0.05;0.75,0.75;close.png;back;;true;false;close_pressed.png]
 			button[7.25,-0.07;2,1;receivers;]] .. S("Receivers") .. [[]
 
 			label[0.2,0.1;]] .. S("From") .. [[: %s]

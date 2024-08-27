@@ -11,7 +11,7 @@ function mail.show_receivers(name, id)
 
 			box[0,0;7,1.1;]] .. mail.get_color("highlighted") .. [[]
 
-			button[7.25,0.15;0.75,0.5;back;X]
+			image_button[7.25,0.15;0.75,0.75;close.png;back;;true;false;close_pressed.png]
 
 			label[0.2,0.1;]] .. S("From") .. [[: %s]
 			label[0.2,0.5;]] .. S("Date") .. [[: %s]

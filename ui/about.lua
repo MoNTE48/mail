@@ -49,7 +49,7 @@ function mail.show_about(name)
 	local formspec = [[
 			size[10,6;]
 			tabheader[0,0;optionstab;]] .. S("Settings") .. "," .. S("About") .. [[;2;false;false]
-			button[9.35,0;0.75,0.5;back;X]
+			image_button[9.35,-0.1;0.75,0.75;close.png;back;;true;false;close_pressed.png]
 
 			box[0,0;3,0.45;]] .. mail.get_color("highlighted") .. [[]
 			label[0.2,0;Mail]
@@ -67,9 +67,6 @@ function mail.show_about(name)
 			S("Communication using this system is NOT guaranteed to be private!") .. " " ..
 			S("Admins are able to view the messages of any player.") .. [[]
 
-			button[0,5.7;2,0.5;github;GitHub]
-			button[2,5.7;2,0.5;contentdb;ContentDB]
-
 			box[4,0;3,0.45;]] .. mail.get_color("highlighted") .. [[]
 			label[4.2,0;]] .. S("Contributors") .. [[]
 
@@ -77,6 +74,9 @@ function mail.show_about(name)
 				.. S("Group by name") .. ","
 				.. S("Group by contribution") .. ";" .. mail.selected_idxs.contributor_grouping[name] .. [[;true]
 			]]
+
+		--	button[0,5.7;2,0.5;github;GitHub]
+		--	button[2,5.7;2,0.5;contentdb;ContentDB]
 
 	local contributor_list, contributor_columns = {}
 
@@ -140,11 +140,11 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
         mail.selected_idxs.optionstab[playername] = 2
         mail.show_about(playername)
 
-	elseif fields.github then
-		minetest.chat_send_player(playername, "https://github.com/mt-mods/mail")
+--	elseif fields.github then
+--		minetest.chat_send_player(playername, "https://github.com/mt-mods/mail")
 
-	elseif fields.contentdb then
-		minetest.chat_send_player(playername, "https://content.minetest.net/packages/mt-mods/mail")
+--	elseif fields.contentdb then
+--		minetest.chat_send_player(playername, "https://content.minetest.net/packages/mt-mods/mail")
 	elseif fields.contributor_grouping then
 		mail.selected_idxs.contributor_grouping[playername] = fields.contributor_grouping
 		mail.show_about(playername)
