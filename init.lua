@@ -44,7 +44,7 @@ mail = {
 local MP = minetest.get_modpath(minetest.get_current_modname())
 dofile(MP .. "/util/init.lua")
 dofile(MP .. "/chatcommands.lua")
-dofile(MP .. "/migrate.lua")
+--dofile(MP .. "/migrate.lua")
 dofile(MP .. "/hud.lua")
 dofile(MP .. "/storage.lua")
 dofile(MP .. "/api.lua")
@@ -55,7 +55,7 @@ dofile(MP .. "/player_recipients.lua")
 dofile(MP .. "/ui/init.lua")
 
 -- migrate storage
-mail.migrate()
+--mail.migrate()
 
 if minetest.get_modpath("mtt") then
 	dofile(MP .. "/mtt.lua")
