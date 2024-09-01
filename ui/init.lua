@@ -16,7 +16,7 @@ dofile(MP .. "/ui/edit_maillists.lua")
 dofile(MP .. "/ui/compose.lua")
 dofile(MP .. "/ui/options.lua")
 dofile(MP .. "/ui/settings.lua")
-dofile(MP .. "/ui/about.lua")
+--dofile(MP .. "/ui/about.lua")
 
 -- helper function for tabbed overview
 

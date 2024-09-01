@@ -42,7 +42,7 @@ function mail.show_settings(name)
 
 	local formspec = [[
 			size[10,6;]
-			tabheader[0,0;optionstab;]] .. S("Settings") .. "," .. S("About") .. [[;1;false;false]
+
             image_button[9.35,-0.1;0.75,0.75;close.png;back;;true;false;close_pressed.png]
 
 			tablecolumns[tree;text]
@@ -54,6 +54,8 @@ function mail.show_settings(name)
             button[0,5.65;2.5,0.5;reset;]] .. S("Reset") .. [[]
             button[7.5,5.65;2.5,0.5;save;]] .. S("Save") .. [[]
             ]]
+
+        -- tabheader[0,0;optionstab;]] .. S("Settings") .. "," .. S("About") .. [[;1;false;false]
 
     local x = 3.5
     local y = -0.7
@@ -236,13 +238,13 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
         local evt = minetest.explode_table_event(fields.groups)
         mail.selected_idxs.settings_group[playername] = mail.settings_groups[tonumber(evt.row)].name
         mail.show_settings(playername)
-    elseif fields.optionstab == "1" then
+ --[[]   elseif fields.optionstab == "1" then
         mail.selected_idxs.optionstab[playername] = 1
 
     elseif fields.optionstab == "2" then
         mail.selected_idxs.optionstab[playername] = 2
         mail.show_about(playername)
-        return
+        return]]
 
     elseif fields.save then
         -- save settings
