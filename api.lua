@@ -1,7 +1,7 @@
 -- see: mail.md
 
 -- translation
-local S = minetest.get_translator("mail")
+local S = mail.S
 
 local f = string.format
 
@@ -69,7 +69,7 @@ function mail.send(m)
 		extra_log = ""
 	end
 
-	minetest.log("action", f("[mail] %q send mail to %q%s with subject %q and body %q",
+	core.log("action", f("[mail] %q send mail to %q%s with subject %q and body %q",
 		m.from, m.to, extra_log, m.subject, m.body
 	))
 
@@ -122,7 +122,7 @@ function mail.save_draft(m)
 	-- defaults
 	m.subject = m.subject or "(No subject)"
 
-	minetest.log("verbose", f("[mail] %q saves draft with subject %q and body %q",
+	core.log("verbose", f("[mail] %q saves draft with subject %q and body %q",
 		m.from, m.subject, m.body
 	))
 
