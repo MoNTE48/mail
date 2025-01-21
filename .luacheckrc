@@ -17,5 +17,8 @@ read_globals = {
 	"unified_inventory", "default", "sfinv_buttons",
 
 	-- optional mods
-	"mtt", "canonical_name"
+	"mtt", "canonical_name",
+	
+	"chat_anticurse",
+	"utf8",
 }

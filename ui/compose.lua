@@ -1,6 +1,9 @@
 -- translation
 local S = mail.S
 
+local anticurse_exists = core.global_exists("chat_anticurse")
+local sub8 = utf8 and utf8.sub or string.sub
+
 local FORMNAME = "mail:compose"
 
 function mail.show_compose(name, to, subject, body, cc, bcc, id)
@@ -31,6 +34,20 @@ function mail.show_compose(name, to, subject, body, cc, bcc, id)
 	core.show_formspec(name, FORMNAME, formspec)
 end
 
+local function check_curses(name, subject, body)
+    subject = sub8(subject or "", 1, 50)
+    body = sub8(body or "", 1, 10000)
+
+    if anticurse_exists and name then
+        subject = chat_anticurse.check_curse_and_ban(subject, name)
+        if not subject then return end
+        body = chat_anticurse.check_curse_and_ban(body, name)
+        if not body then return end
+    end
+
+    return subject, body
+end
+
 core.register_on_player_receive_fields(function(player, formname, fields)
 	if formname ~= FORMNAME then
 		return
@@ -39,6 +56,9 @@ core.register_on_player_receive_fields(function(player, formname, fields)
 	local name = player:get_player_name()
     if fields.send then
 	local id = mail.selected_idxs.message[name] or mail.new_uuid()
+        fields.subject, fields.body = check_curses(name, fields.subject, fields.body)
+        if fields.subject == "" and fields.body == "" then return end
+
         if (fields.to == "" and fields.cc == "" and fields.bcc == "") or fields.body == "" then
             -- if mail is invalid then store it as a draft
             mail.save_draft({
@@ -108,6 +128,9 @@ core.register_on_player_receive_fields(function(player, formname, fields)
         mail.show_mail_menu(name)
 
     elseif fields.draft then
+        fields.subject, fields.body = check_curses(name, fields.subject, fields.body)
+        if fields.subject == "" and fields.body == "" then return end
+
         local id = mail.new_uuid()
         if mail.selected_idxs.message[name] then
             id = mail.selected_idxs.message[name]
